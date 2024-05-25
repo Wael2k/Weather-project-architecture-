@@ -1,4 +1,4 @@
-package weather_domain.weather_business;
+package weather_business;
 
 import org.springframework.stereotype.Service;
 import weather_domain.entities.WeatherConfig;
@@ -16,6 +16,6 @@ public class WeatherManager  {
     public WeatherManager(){
 
     }
-
+atu
 
 }
