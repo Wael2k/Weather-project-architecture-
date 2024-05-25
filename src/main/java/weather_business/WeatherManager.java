@@ -16,6 +16,6 @@ public class WeatherManager  {
     public WeatherManager(){
 
     }
-atu
+
 
 }
