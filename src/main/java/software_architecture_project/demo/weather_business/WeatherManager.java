@@ -1,5 +1,6 @@
 package software_architecture_project.demo.weather_business;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import software_architecture_project.demo.weather_domain.entities.WeatherConfig;
 import software_architecture_project.demo.weather_domain.entities.WeatherInfo;
@@ -12,8 +13,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 @Service
-public class WeatherManager implements IWeatherIn, IWeatherOut {
+public class WeatherManager implements IWeatherOut {
     private WeatherConfig weatherConfig;
+    @Autowired
+    private IWeatherIn iWeatherIn;
     private WeatherInfo info;
     private Timer polling;
     private Random random;
@@ -24,30 +27,8 @@ public class WeatherManager implements IWeatherIn, IWeatherOut {
     }
 
 
-    @Override
-    public void display(WeatherInfo info) {
-        StringBuilder displayMessage = new StringBuilder("Weather Information:\n");
 
-        if (info.getTemperature() != 0) {
-            displayMessage.append("Temperature: ").append(info.getTemperature()).append("°C\n");
-        }
-        if (info.getPression() != 0) {
-            displayMessage.append("Pression: ").append(info.getPression()).append(" hPa\n");
-        }
-        if (info.getWind() != 0) {
-            displayMessage.append("Wind: ").append(info.getWind()).append(" km/h\n");
-        }
-        if (info.getPrecipitation() != 0) {
-            displayMessage.append("Precipitation: ").append(info.getPrecipitation()).append(" mm\n");
-        }
 
-        System.out.println(displayMessage.toString());
-    }
-
-    @Override
-    public void writeWeatherValue(String valueType, String value) {
-
-    }
 
     @Override
     public void startCollect() {
@@ -87,6 +68,6 @@ public class WeatherManager implements IWeatherIn, IWeatherOut {
         if (weatherConfig.isHasPression()) {
             info.setPression(random.nextInt(1191) + 10);
         }
-       display(info);
+        iWeatherIn.display(info);
     }
 }
