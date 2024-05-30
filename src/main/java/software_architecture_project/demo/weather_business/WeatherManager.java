@@ -1,4 +1,4 @@
-package software_architecture_project.demo;
+package software_architecture_project.demo.weather_business;
 
 import org.springframework.stereotype.Service;
 import software_architecture_project.demo.weather_domain.entities.WeatherConfig;

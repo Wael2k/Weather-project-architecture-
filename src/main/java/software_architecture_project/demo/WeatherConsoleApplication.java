@@ -3,6 +3,7 @@ package software_architecture_project.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import software_architecture_project.demo.weather_business.WeatherManager;
 import software_architecture_project.demo.weather_domain.entities.WeatherConfig;
 
 import java.util.Scanner;
